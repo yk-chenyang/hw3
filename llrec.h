@@ -83,8 +83,20 @@ Node* llfilter(Node* head, Comp pred)
     //*********************************************
     // Provide your implementation below
     //*********************************************
-
-
+  if(head==NULL){
+    return head; //either empty or at the end
+  }
+  else{
+    Node* temp = llfilter(head->next, pred); //just traverse, but will use the return value to do stuff later
+    if(pred(head->val)){ //if I will be deleted
+      delete head; 
+      return temp; //delete myself and pass the address of my next to my prev
+    }
+    else{ //if I can survive
+      head->next=temp; 
+      return head; //set my next to the preserved value passed to me by what follows, then return myself
+    }
+  }
 }
 
 #endif

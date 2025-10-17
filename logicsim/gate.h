@@ -35,4 +35,11 @@ class Or2Gate : public Gate
       Event* update(uint64_t);
 };
 
+class NotGate : public Gate //NotGate. Same model but now only one input
+{
+  public:
+      NotGate(Wire*, Wire*);
+      Event* update(uint64_t);
+};
+
 #endif
